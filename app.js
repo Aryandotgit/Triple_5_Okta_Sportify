@@ -12,17 +12,48 @@ const jwt = require('jsonwebtoken');
 const { requireAuth,checkUser } = require('./middleware/authMiddleware');
 const request = require('request');
 var favicon = require('serve-favicon');
+const session = require('express-session');
+const { ExpressOIDC } = require('@okta/oidc-middleware');
 
 //app
 const app = express();
+
+//okta
+app.use(session({
+    secret: env.SECRET,
+    resave: true,
+    saveUninitialized: false
+  }));
+
+  const oidc = new ExpressOIDC({
+    issuer: `https://dev-16984361.okta.com/oauth2/default`,
+    client_id: env.OKTA_CLIENTID,
+    client_secret: env.OKTA_SECRET,
+    redirect_uri: 'https://dev-16984361.okta.com/authorization-code/callback',
+    appBaseUrl: 'http://localhost:3000',
+    scope: 'openid profile'
+  });
+
+  oidc.on('error', err => {
+    // An error occurred with OIDC
+    // eslint-disable-next-line no-console
+    console.error('OIDC ERROR: ', err);
+
+    // Throwing an error will terminate the server process
+    // throw err;
+  });
+
+  //listening
+  oidc.on('ready', () => {
+    app.listen(process.env.PORT || 3000);
+    });
 
 //Mongo connection and listen
 const dbURI = env.MONGO_URI;
 mongoose.connect(dbURI, {useNewUrlParser:true,useUnifiedTopology:true})
     .then((result)=> {
         console.log('Connected to DB');
-        //listening
-        app.listen(process.env.PORT || 3000);
+        
     })
     .catch((err) => console.log(err));
 
@@ -38,6 +69,7 @@ app.use(express.urlencoded({ extended:true }));
 app.use(express.json());
 app.use(cookieParser());
 app.use(morgan('dev'));
+app.use(oidc.router);
 
 //icons
 const thumbs = {
@@ -74,12 +106,6 @@ app.get('/all-event',async (req,res)=>{
         });
 })
 
-//jsonwebtoken
-const maxAge = 1 * 24 * 60 * 60;
-
-const createToken = (id) => {
-    return jwt.sign({id},env.JWT_SECRET,{expiresIn:maxAge});
-}
 
 //login status
 app.get('*',checkUser);
@@ -179,12 +205,10 @@ app.post('/add-going/',requireAuth,async (req,res)=>{
 
 //auth Routes
 
-app.get('/login',(req,res)=>{
-    res.render('login',{sawo_key:env.SAWO_KEY})
-})
+
 
 app.get('/logout',(req,res)=>{
-    res.cookie('jwt','',{maxAge:1});
+ 
     res.redirect('/');
 })
 
@@ -192,8 +216,7 @@ app.post('/add-user',async (req,res)=>{
     const {user_id,email} = req.body;
     try{
         const user = await User.login(user_id, email);
-        const token = createToken(user._id);
-        res.cookie('jwt',token,{httpOnly:true,maxAge: maxAge*1000});
+       
         res.send(user);
     }
     catch{
@@ -203,8 +226,7 @@ app.post('/add-user',async (req,res)=>{
         });
         user.save()
         .then((result)=>{
-            const token = createToken(result._id);
-            res.cookie('jwt',token,{httpOnly:true,maxAge: maxAge*1000});
+            
             res.send(result);
         })
         .catch((err)=>{
