@@ -1,0 +1,111 @@
+
+html
+{
+    margin: 0px;
+    overflow-x: hidden;
+
+}
+body{
+    margin-top: 0;
+    margin-left: 0;
+    background-image:linear-gradient(180deg, rgba(22,10,71,1) 0%, rgba(96,4,122,1) 100%);
+    height: fit-content;
+    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Bebas Neue';
+
+}
+
+.mapwindow
+{
+   padding-top: 10vh;
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+}
+
+#map 
+{
+    height: 100%;
+    width: 70vw;
+    order: 2;
+}
+.mapfilter
+{
+    height: 100%;
+    width: 30vw;
+    background-color: rgba(135, 24, 179, 0.466);
+    order: 1;
+}
+
+.gm-svpc
+{
+  display: none;
+}
+.selector-control {
+margin-top: 10px;
+}
+
+#searchInput,#name,#minpeeps,#description,#Activity,#datepicker,#evsubmit
+{
+margin: 20px 10% 0 10%;
+width: 80%;
+
+}
+#latitude,#longitude
+{
+  display: none;
+}
+
+
+.datepicker
+{
+  margin: 20px 10% 0 10%;
+  font-size: 99% !important;
+width: 80%;
+}
+
+
+@media screen and (max-width: 740px) {
+
+  .mapwindow
+  {
+     padding-top: 10vh;
+      width: 100vw;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+  }
+  
+  #map 
+  {
+      height: 70vh;
+      width: 100vw;
+      order: 1;
+
+  }
+  .mapfilter
+  {
+      height: fit-content;
+      padding-bottom: 30px;
+      width: 100vw;
+      background-color: rgba(135, 24, 179, 0.466);
+      float: inline-end;
+      order: 2;
+  }
+  .applybtncont
+{
+  display: flex;
+  justify-content: center;
+}
+  .applybtn
+  {
+    margin: 20px 0 0 0;
+    width: 40vw;
+  }
+  .findcont{
+    margin-top: 20px;
+  }
+.findcard{
+  margin: 20px 5% 20px 5%;
+}
+}

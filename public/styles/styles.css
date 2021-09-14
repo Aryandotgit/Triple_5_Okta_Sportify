@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+*
+{
+    scroll-behavior: auto!important;
+}
+body{
+    margin-top: 0;
+    margin-left: 0;
+    background-image:radial-gradient(circle, rgba(156,15,95,1) 0%, rgba(96,4,122,1) 50%, rgba(22,10,71,1) 100%);
+    min-height: calc(6000px + 100vh);
+    font-family: 'Ubuntu', sans-serif;
+}
+
+section.webgl{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+.bigtext
+{
+color: white;
+font-size: 4.5em;
+line-height: 1.1em;
+}
+
+
+.box
+{
+    z-index: 2;
+    position: fixed;
+    margin-left: 30px;
+    margin-top: 100px;
+    background-color: #00000000;
+    height: fit-content;
+    width:60vw;
+}
+
+.box1
+{  
+    opacity: 0;
+}
+.box2
+{  
+    opacity: 0;
+}
+.box3
+{
+ opacity: 0;
+}
+.box4
+{
+ opacity: 0;
+}
+.box5
+{
+ opacity: 0;
+}
+.box6
+{
+ opacity: 0;
+}
+.btn-outline-light
+{
+    margin-right: 10px;
+}
+.typed-cursor
+{
+    display: none;
+}
+.activ
+    
+{
+    font-family: 'Bebas Neue';
+    line-height: 1em;
+    font-size: 1.7em;
+}
+.homecta
+{
+margin-top: 5vh;
+}
+
+.scroll-down div
+{
+    font-family: ubuntu,sans-serif;
+    color: white;
+    margin-left: -4px;
+}
+.scrollcont
+{
+    display: flex;
+    align-items: center;
+    vertical-align: baseline;
+    justify-content: center;
+    z-index: -1;
+    height: 100vh;
+
+}
+.scroll-down.mouse {
+    height: 100px;
+    margin-top: auto;
+    /* position: fixed; */
+    /* width: 100%;
+    margin: auto auto 0 auto; */
+
+  }
+  .scroll-down.mouse span {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 60px;
+    /* left: 48vw;
+    top: 83vh; */
+    border: 2px solid #fff;
+    border-radius: 50px;
+  }
+  .scroll-down.mouse.effect2 span::after {
+    position: absolute;
+    content: "";
+    top: 10px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 2px;
+    height: 20px;
+    border-radius: 2px;
+    background: #fff;
+    animation: animateMouseScrollBar 1.5s infinite linear;
+  }
+  @keyframes animateMouseScrollBar {
+    0% {
+      height: 20px;
+      top: 10px;
+    }
+    50% {
+      height: 0;
+      top: 30px;
+    }
+    50.01% {
+      top: 10px;
+    }
+    100%{
+      height: 20px;
+    }
+  }
+
+@media screen and (max-width: 600px) {
+    
+  .box{
+    width: 85vw;
+    top: 15vh;
+    text-align: center;
+
+
+    
+    padding: 0px 20px 0px 20px;
+    margin-left: 0px;
+    margin-top: 100px;
+    /* background-color: #00000000; */
+    height: fit-content;
+    width:100vw;
+}
+   .bigtext{
+     font-size: 15vw;
+   }
+
+  }
+  
+.loadinganim
+{
+  
+  width: 80vw;
+  /* height: 100vh; */
+}
