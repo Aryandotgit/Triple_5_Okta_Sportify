@@ -1,0 +1,171 @@
+
+html
+{
+    margin: 0px;
+    overflow-x: hidden;
+
+}
+body{
+    margin-top: 0;
+    margin-left: 0;
+    background-image:linear-gradient(180deg, rgba(22,10,71,1) 0%, rgba(96,4,122,1) 100%);
+    height: fit-content;
+    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Bebas Neue';
+
+}
+
+.mapwindow
+{
+   padding-top: 10vh;
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    
+}
+
+#map 
+{
+    height: 100%;
+    width: 70vw;
+    order: 2;
+    /* display: none; */
+}
+.mapfilter
+{
+    order: 1;
+    height: 100%;
+    width: 30vw;
+    background-color: rgba(135, 24, 179, 0.466);
+    display: flex;
+    vertical-align: middle;
+}
+.filterinnercont
+{
+  height: fit-content;
+  width: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.gm-svpc
+{
+  display: none;
+}
+.selector-control {
+margin-top: 10px;
+}
+
+#searchInput,#Activity,#datepicker
+{
+margin: 20px 10% 0 10%;
+width: 80%;
+
+}
+
+.applybtn
+{
+  margin: 20px 10% 0 10%;
+}
+
+
+
+/* Find Card */
+
+.findcont
+{
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    /* gap: 1rem; */
+    align-items: center;
+
+}
+.findcard
+{
+  background-color: rgb(22,10,71,1);
+  width: 90%;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 20px 5% 20px 5%;
+  display: block;
+  color: white;
+
+}
+
+.factivity
+{
+  font-size: 2em;
+  font-weight: 600;
+  display: flex;
+  /* color: rgb(255, 255, 255); */
+}
+.factivity i,.factivity span{
+  margin: auto 10px auto auto;
+  fill: aliceblue;
+}
+.factivity img{
+  margin: auto 10px auto auto;
+  height: 24px;
+  width: 24px;
+  fill: aliceblue;
+}
+.fbtnrow
+{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  vertical-align: middle;
+}
+
+.btn-outline-success
+{
+/* background-color: aquamarine!important; */
+color: greenyellow!important;
+}
+
+
+@media screen and (max-width: 740px) {
+
+  .mapwindow
+  {
+     padding-top: 10vh;
+      width: 100vw;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+  }
+  
+  #map 
+  {
+      height: 70vh;
+      width: 100vw;
+      order: 1;
+
+  }
+  .mapfilter
+  {
+      height: fit-content;
+      padding-bottom: 30px;
+      width: 100vw;
+      background-color: rgba(135, 24, 179, 0.466);
+      float: inline-end;
+      order: 2;
+  }
+  .applybtncont
+{
+  display: flex;
+  justify-content: center;
+}
+  .applybtn
+  {
+    margin: 20px 0 0 0;
+    width: 40vw;
+  }
+  .findcont{
+    margin-top: 20px;
+  }
+.findcard{
+  margin: 20px 5% 20px 5%;
+}
+}
